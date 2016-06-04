@@ -1,0 +1,12 @@
+<h1>Hello Test</h1>
+
+<p ng-bind="vm.question.text"></p>
+<label ng-repeat="answer in vm.question.answers">
+    <input type="radio" name="answer" ng-model="vm.userAnswer.answer" value="{{$index}}">
+    {{answer}}<br>
+</label><br>
+
+<button ng-click="vm.nextQuestion()">Пропустить вопрос</button> <br>
+<button ng-click="vm.answerQuestion()">Следующий вопрос</button>
+
+
