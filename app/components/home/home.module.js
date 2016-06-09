@@ -6,4 +6,4 @@ HomeModule
   .controller('HomeController', HomeController)
 ;
 
-export default HomeModule;
+export default HomeModule.name;

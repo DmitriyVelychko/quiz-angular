@@ -7,4 +7,4 @@ ResultModule
   .value('resultValue', {correctness: ''});
 ;
 
-export default ResultModule;
+export default ResultModule.name;

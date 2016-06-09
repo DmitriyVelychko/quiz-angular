@@ -1,6 +1,6 @@
 import angular from 'angular';
-import ngRoute from 'angular-route';
-import ngStorage from 'ngstorage';
+import uiRouter from 'angular-ui-router';
+import 'ngstorage';
 
 import HomeModule from './components/home/home.module';
 import ResultModule from './components/result/result.module';
@@ -10,12 +10,12 @@ import CommunicationModule from './shared/communication/communication.module';
 import {routerConfig} from './app.router';
 
 angular.module('app', [
-  'ngRoute',
+  uiRouter,
   'ngStorage',
-  HomeModule.name,
-  ResultModule.name,
-  QuizModule.name,
-  CommunicationModule.name,
+  HomeModule,
+  ResultModule,
+  QuizModule,
+  CommunicationModule,
 ])
   .config(routerConfig)
 

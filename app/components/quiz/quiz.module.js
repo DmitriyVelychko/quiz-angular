@@ -8,4 +8,4 @@ QuizModule
   .service('QuizService', QuizService)
 ;
 
-export default QuizModule;
+export default QuizModule.name;

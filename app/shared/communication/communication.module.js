@@ -6,4 +6,4 @@ CommunicationModule
   .service('CommunicationService', CommunicationService)
 ;
 
-export default CommunicationModule;
+export default CommunicationModule.name;
