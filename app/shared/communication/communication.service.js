@@ -1,27 +1,28 @@
 export default class CommunicationService {
-  constructor($http, $q, resultValue) {
+  constructor($http, $q, $log, resultValue) {
     'ngInject';
     this.$http = $http;
     this.$q = $q;
-    this.resultValue = resultValue
+    this.$log = $log;
+    this.resultValue = resultValue;
   }
 
   get() {
     const defer = this.$q.defer();
-    this.$http.get("./question/test-php.json").then((res) => {
-      console.log(res)
+    this.$http.get('./question/test-php.json').then((res) => {
+      this.$log.log(res);
       defer.resolve(res.data);
     }, (err) => {
-      console.log(err)
+      this.$log.error(err);
       defer.reject(err);
     });
     return defer.promise;
-  };
+  }
 
   post(data) {
-    this.$http.post("/result", data).success((data) => {
-      this.resultValue.correctness = data;
+    this.$http.post('/result', data).success((result) => {
+      this.resultValue.correctness = result;
     });
-  };
+  }
 
-};
+}

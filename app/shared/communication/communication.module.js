@@ -1,9 +1,5 @@
 import CommunicationService from './communication.service';
 
-const CommunicationModule = angular.module('app.communication', []);
-
-CommunicationModule
+angular.module('app.communication', [])
   .service('CommunicationService', CommunicationService)
 ;
-
-export default CommunicationModule.name;

@@ -1,9 +1,6 @@
 import HomeController from './home.controller';
 
-const HomeModule = angular.module('app.home', []);
-
-HomeModule
+angular.module('app.home', [])
   .controller('HomeController', HomeController)
 ;
 
-export default HomeModule.name;

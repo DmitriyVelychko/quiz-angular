@@ -11,15 +11,15 @@ export default class TestController {
   init() {
     this.defineScope();
     this.defineListeners();
-  };
+  }
 
   defineScope() {
     this.sessionAnswer = [];
     this.$scope.questions = this.QuizService.questions;
     this.userAnswer = {
-      answer: "wrong"
+      answer: 'wrong',
     };
-  };
+  }
 
   defineListeners() {
     this.$scope.$watch('questions', () => {
@@ -27,7 +27,7 @@ export default class TestController {
         this.question = this.QuizService.getCurrent();
       }
     }, true);
-  };
+  }
 
   answerQuestion() {
     this.question.isAnswered = true;
@@ -36,20 +36,20 @@ export default class TestController {
     this.sessionAnswer.push(this.userAnswer);
     this.QuizService.saveAnswers(this.sessionAnswer);
     this.nextQuestion();
-  };
+  }
 
   nextQuestion() {
     const nextQuestion = this.QuizService.getNext();
     if (nextQuestion) {
       this.question = nextQuestion;
       this.userAnswer = {
-        answer: "wrong"
+        answer: 'wrong',
       };
     } else {
       this.QuizService.send();
       this.QuizService.reset();
       this.$location.url('result');
     }
-  };
+  }
 
-};
+}

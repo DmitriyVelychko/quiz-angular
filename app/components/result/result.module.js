@@ -1,10 +1,6 @@
 import ResultController from './result.controller';
 
-const ResultModule = angular.module('app.result', []);
-
-ResultModule
+angular.module('app.result', [])
   .controller('ResultController', ResultController)
-  .value('resultValue', {correctness: ''});
+  .value('resultValue', { correctness: '' })
 ;
-
-export default ResultModule.name;

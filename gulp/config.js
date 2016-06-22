@@ -1,4 +1,4 @@
-const dest = "public/";
+const dest = 'public/';
 const src = 'app/';
 
 module.exports = {
@@ -6,22 +6,22 @@ module.exports = {
     styles: {
       src: `${src}styles.scss`,
       dest: `${dest}styles/`,
-      watch: `${src}**/*.scss`
+      watch: `${src}**/*.scss`,
     },
     scripts: {
       src: `${src}app.js`,
       dest: `${dest}js/`,
-      watch: `${src}**/*/js`
+      watch: `${src}**/*.js`,
     },
     views: {
       index: {
         src: `${src}index.html`,
-        dest: `${dest}js/`
+        dest: `${dest}`,
       },
       default: {
         src: [`${src}**/*.html`, `!${src}index.html`],
-        dest: `${dest}views/`
-      }
-    }
-  }
+        dest: `${dest}views/`,
+      },
+    },
+  },
 };

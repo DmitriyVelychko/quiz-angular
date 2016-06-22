@@ -1,74 +1,76 @@
-export default class TestService  {
-  constructor(CommunicationService, $localStorage) {
+export default class TestService {
+  constructor(CommunicationService, $localStorage, $log) {
     'ngInject';
     this.CommunicationService = CommunicationService;
     this.$localStorage = $localStorage;
+    this.$log = $log;
     this.init();
   }
 
-  init () {
+  init() {
     this.initModel();
     if (!this.$localStorage.questions) {
       this.$localStorage.questions = this.questions;
       this.$localStorage.current = this.current;
-      this.fetchQuestions()
+      this.fetchQuestions();
     }
-  };
+  }
 
-  initModel () {
+  initModel() {
     this.questions = this.$localStorage.questions || [];
-    this.checker = this.$localStorage.checker || "";
-    this.current = this.$localStorage.current || "";
+    this.checker = this.$localStorage.checker || '';
+    this.current = this.$localStorage.current || '';
     this.sessionAnswers = this.$localStorage.sessionAnswers || [];
-  };
+  }
 
-  fetchQuestions () {
+  fetchQuestions() {
     const that = this;
-    this.CommunicationService.get().then((data) => {
-      data.questions.forEach((el, index) => {
-        el.isAnswered = false;
-        el.index = index;
-        that.questions.push(el);
+    this.CommunicationService.get().then(
+      (data) => {
+        data.questions.forEach((el, index) => {
+          const tempEl = el;
+          tempEl.isAnswered = false;
+          tempEl.index = index;
+          that.questions.push(tempEl);
+        });
+        that.checker = data.checker;
+        this.$localStorage.checker = that.checker;
+        that.current = that.questions[0];
+      },
+      (err) => {
+        this.$log.error(err);
       });
-
-      that.checker = data.checker;
-      this.$localStorage.checker = that.checker;
-      that.current = that.questions[0];
-
-    }, (err) => {
-      console.error(err);
-    });
-  };
+  }
 
 
-
-  reset () {
+  reset() {
     this.$localStorage.$reset();
     this.init();
-  };
+  }
 
-  getCurrent () {
+  getCurrent() {
     return this.current;
-  };
+  }
 
-  send () {
-    var reqData = {
+  send() {
+    const reqData = {
       checker: this.checker,
-      answers: this.sessionAnswers
+      answers: this.sessionAnswers,
     };
     this.CommunicationService.post(JSON.stringify(reqData));
-  };
+  }
 
-  findNext (collection) {
-    for (var k = 0, length = collection.length; k < length; k += 1) {
+  findNext(collection) {
+    for (let k = 0, length = collection.length; k < length; k += 1) {
       if (!collection[k].isAnswered) {
         return collection[k];
       }
     }
-  };
+  }
 
-  getNext () {
-    let current, left;
+  getNext() {
+    let current;
+    let left;
 
     if (this.current.index + 1 < this.questions.length) {
       left = this.questions.slice(this.current.index + 1);
@@ -77,15 +79,14 @@ export default class TestService  {
     this.current = !current ? this.findNext(this.questions) : current;
     this.$localStorage.current = this.current;
     return this.current;
-  };
+  }
 
-  saveAnswers  (sessionAnswers) {
+  saveAnswers(sessionAnswers) {
     this.sessionAnswers = sessionAnswers;
     this.$localStorage.sessionAnswers = this.sessionAnswers;
-  };
+  }
 
-  getSessionAnswer  () {
+  getSessionAnswer() {
     return this.sessionAnswers;
-  };
-
-};
+  }
+}

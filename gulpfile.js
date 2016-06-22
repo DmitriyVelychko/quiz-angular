@@ -1,18 +1,44 @@
-var gulp = require('gulp');
-var wrench = require('wrench');
-var config = require('./gulp/config').path;
+const gulp = require('gulp');
+const wrench = require('wrench');
+const config = require('./gulp/config').path;
+const nodemon = require('gulp-nodemon');
+const browserSync = require('browser-sync');
+var reload = browserSync.reload;
 
-wrench.readdirSyncRecursive('./gulp').filter(function(file) {
-  return (/\.(js|coffee)$/i).test(file);
-}).map(function(file) {
-  require('./gulp/' + file);
+wrench.readdirSyncRecursive('./gulp').filter(
+  (file) => {
+    return (/\.(js|coffee)$/i).test(file);
+  }).map(
+  (file) => {
+    require(`./gulp/${file}`);
+  }
+);
+
+gulp.task('browser-sync', ['nodemon'], function () {
+  browserSync.init(null, {
+    proxy: "localhost:5000",
+    port: 1337,
+    notify: true,
+    browser: "google chrome",
+  });
 });
 
-gulp.task('watch', ['default'], function () {
-  gulp.watch(config.views.index.src, ['copy_index']);
-  gulp.watch(config.views.default.src, ['copy_views']);
-  gulp.watch(config.scripts.watch, ['scripts']);
-  gulp.watch(config.styles.watch, ['styles']);
+gulp.task('nodemon', function (cb) {
+  var called = false;
+  return nodemon({
+    script: 'app.js',
+    watch: ['app.js'],
+  })
+    .on('start', function onStart() {
+      if (!called) { cb(); }
+      called = true;
+    });
 });
 
-gulp.task('default', ['copy_views', 'scripts', 'styles']);
+
+gulp.task('default', ['browser-sync'], () => {
+  gulp.watch(config.styles.watch, ['styles', reload]);
+  gulp.watch(config.scripts.watch, ['scripts', reload]);
+  gulp.watch(config.views.default.watch, ['copy_views']);
+  gulp.watch(config.views.index.watch, ['copy_index']);
+});
