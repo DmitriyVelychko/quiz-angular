@@ -1,9 +1,9 @@
-var gulp = require('gulp');
-var babelify = require('babelify');
-var browserify = require('browserify');
-var source = require('vinyl-source-stream');
+const gulp = require('gulp');
+const babelify = require('babelify');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
 const eslint = require('gulp-eslint');
-var config = require('./config').path;
+const config = require('./config');
 
 gulp.task('scripts', ['lint'], () => {
   return browserify(config.scripts.src, {debug: true}).transform(babelify.configure({

@@ -1,6 +1,6 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var config = require('./config').path;
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const config = require('./config');
 
 gulp.task('styles', () => {
   gulp.src(config.styles.src)

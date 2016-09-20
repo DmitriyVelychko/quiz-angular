@@ -6,6 +6,7 @@ import './components/home/home.module';
 import './components/result/result.module';
 import './components/quiz/quiz.module';
 import './components/shared/communication/communication.module';
+import './app.templates';
 
 import { routerConfig } from './app.router';
 
@@ -16,6 +17,7 @@ angular.module('app', [
   'app.result',
   'app.quiz',
   'app.communication',
+  'app.templates',
 ])
   .config(routerConfig)
 ;

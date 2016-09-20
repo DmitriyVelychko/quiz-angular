@@ -2,7 +2,6 @@ const dest = 'build/';
 const src = 'app/';
 
 module.exports = {
-  path: {
     styles: {
       src: `${src}assets/sass/styles.scss`,
       dest: `${dest}styles/`,
@@ -10,7 +9,7 @@ module.exports = {
     },
     scripts: {
       src: `${src}app.js`,
-      lint: [`${src}**/*.js`,'!node_modules/**'],
+      lint: [`${src}**/*.js`,'!node_modules/**', `!${src}app.templates.js`],
       dest: `${dest}js/`,
       watch: `${src}**/*.js`,
     },
@@ -24,9 +23,8 @@ module.exports = {
         dest: `${dest}`,
       },
       default: {
-        src: [`${src}**/*.html`, `!${src}index.html`],
-        dest: `${dest}views/`,
+        src: `${src}components/**/*.html`,
+        dest: `${src}/`,
       },
     },
-  },
 };

@@ -57,7 +57,7 @@ export default class TestService {
       checker: this.checker,
       answers: this.sessionAnswers,
     };
-    this.CommunicationService.post(Angular.toJson(reqData));
+    this.CommunicationService.post(angular.toJson(reqData));
   }
 
   findNext(collection) {

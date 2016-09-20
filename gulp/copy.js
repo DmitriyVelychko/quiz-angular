@@ -1,10 +1,5 @@
-var gulp = require('gulp');
-var config = require('./config').path;
-
-gulp.task('copy_views', function () {
-  return gulp.src(config.views.default.src)
-    .pipe(gulp.dest(config.views.default.dest))
-});
+const gulp = require('gulp');
+const config = require('./config');
 
 gulp.task('copy_index', function () {
   return gulp.src(config.views.index.src)
@@ -16,4 +11,4 @@ gulp.task('copy_question', () => {
       .pipe(gulp.dest(config.question.dest))
 });
 
-gulp.task('copy', ['copy_views', 'copy_index', 'copy_question']);
+gulp.task('copy', ['copy_index', 'copy_question']);

@@ -4,6 +4,6 @@
     "angular/no-service-method": 0
   },
   "globals": {
-    "Angular": true
+    "angular": true
   }
 }
