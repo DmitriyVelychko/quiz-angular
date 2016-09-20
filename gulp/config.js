@@ -1,10 +1,10 @@
-const dest = 'public/';
+const dest = 'build/';
 const src = 'app/';
 
 module.exports = {
   path: {
     styles: {
-      src: `${src}styles.scss`,
+      src: `${src}assets/sass/styles.scss`,
       dest: `${dest}styles/`,
       watch: `${src}**/*.scss`,
     },
@@ -12,6 +12,10 @@ module.exports = {
       src: `${src}app.js`,
       dest: `${dest}js/`,
       watch: `${src}**/*.js`,
+    },
+    question: {
+      src: `${src}assets/question/*`,
+      dest: `${dest}question/`
     },
     views: {
       index: {

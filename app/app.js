@@ -5,7 +5,7 @@ import 'ngstorage';
 import './components/home/home.module';
 import './components/result/result.module';
 import './components/quiz/quiz.module';
-import './shared/communication/communication.module';
+import './components/shared/communication/communication.module';
 
 import { routerConfig } from './app.router';
 

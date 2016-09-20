@@ -14,7 +14,7 @@ wrench.readdirSyncRecursive('./gulp').filter(
   }
 );
 
-gulp.task('browser-sync', ['nodemon'], function () {
+gulp.task('browser-sync', ['nodemon'], () => {
   browserSync.init(null, {
     proxy: "localhost:5000",
     port: 1337,
@@ -23,8 +23,8 @@ gulp.task('browser-sync', ['nodemon'], function () {
   });
 });
 
-gulp.task('nodemon', function (cb) {
-  var called = false;
+gulp.task('nodemon', (cb) => {
+  let called = false;
   return nodemon({
     script: 'app.js',
     watch: ['app.js'],
@@ -42,3 +42,5 @@ gulp.task('default', ['browser-sync'], () => {
   gulp.watch(config.views.default.watch, ['copy_views']);
   gulp.watch(config.views.index.watch, ['copy_index']);
 });
+
+gulp.task('build', ['copy', 'styles', 'scripts']);
