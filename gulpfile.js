@@ -1,9 +1,10 @@
 const gulp = require('gulp');
 const wrench = require('wrench');
-const config = require('./gulp/config').path;
+const config = require('./gulp/config');
 const nodemon = require('gulp-nodemon');
 const browserSync = require('browser-sync');
-var reload = browserSync.reload;
+const gulpsync = require('gulp-sync')(gulp);
+const reload = browserSync.reload;
 
 wrench.readdirSyncRecursive('./gulp').filter(
   (file) => {
@@ -43,4 +44,4 @@ gulp.task('default', ['browser-sync'], () => {
   gulp.watch(config.views.index.watch, ['copy_index']);
 });
 
-gulp.task('build', ['copy', 'styles', 'scripts']);
+gulp.task('build', gulpsync.sync(['copy', 'styles', 'html2js', 'scripts']));
