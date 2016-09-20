@@ -10,6 +10,7 @@ module.exports = {
     },
     scripts: {
       src: `${src}app.js`,
+      lint: [`${src}**/*.js`,'!node_modules/**'],
       dest: `${dest}js/`,
       watch: `${src}**/*.js`,
     },

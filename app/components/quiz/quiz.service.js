@@ -57,15 +57,17 @@ export default class TestService {
       checker: this.checker,
       answers: this.sessionAnswers,
     };
-    this.CommunicationService.post(JSON.stringify(reqData));
+    this.CommunicationService.post(Angular.toJson(reqData));
   }
 
   findNext(collection) {
+    let finder = null;
     for (let k = 0, length = collection.length; k < length; k += 1) {
       if (!collection[k].isAnswered) {
-        return collection[k];
+        finder = collection[k];
       }
     }
+    return finder;
   }
 
   getNext() {

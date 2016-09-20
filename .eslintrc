@@ -1,3 +1,9 @@
 {
-  "extends": ["airbnb", "angular"]
+  "extends": ["airbnb", "angular"],
+  "rules": {
+    "angular/no-service-method": 0
+  },
+  "globals": {
+    "Angular": true
+  }
 }
