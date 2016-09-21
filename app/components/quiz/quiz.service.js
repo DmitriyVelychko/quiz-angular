@@ -42,7 +42,6 @@ export default class TestService {
       });
   }
 
-
   reset() {
     this.$localStorage.$reset();
     this.init();
