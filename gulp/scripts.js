@@ -5,7 +5,7 @@ const source = require('vinyl-source-stream');
 const eslint = require('gulp-eslint');
 const config = require('./config');
 
-gulp.task('scripts', ['lint'], () => {
+gulp.task('scripts', () => {
   return browserify(config.scripts.src, {debug: true}).transform(babelify.configure({
     presets: ["es2015"],  plugins: ["ng-annotate"]
   }))

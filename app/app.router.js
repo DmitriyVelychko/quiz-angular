@@ -18,6 +18,9 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       templateUrl: 'components/result/result.view.html',
       controller: 'ResultController',
       controllerAs: 'vm',
+      params: {
+        answer: null,
+      },
     });
   $urlRouterProvider.otherwise('/home');
 }

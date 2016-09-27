@@ -1,8 +1,6 @@
-var express = require('express');
-
 var answerCheck = function (data) {
 
-    var checker  = require('../answerCheck/'+data.checker);
+    var checker  = require('../answerCheck/' + data.checker);
     var correctness;
     var correctAnswers = 0;
 
@@ -15,7 +13,6 @@ var answerCheck = function (data) {
             correctAnswers++;
         }
     }
-
     correctness = (correctAnswers / data.answers.length) * 100;
     return correctness;
 

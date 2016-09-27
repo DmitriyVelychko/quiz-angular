@@ -1,7 +1,6 @@
 export default class ResultService {
 
-  constructor(resultValue) {
-    'ngInject';
-    this.correctness = resultValue.correctness;
+  constructor($stateParams) {
+    this.answer = $stateParams.answer;
   }
 }

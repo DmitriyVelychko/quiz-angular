@@ -1,8 +1,8 @@
 export default class TestController {
 
-  constructor($scope, $location, QuizService) {
+  constructor($scope, $state, QuizService) {
     'ngInject';
-    this.$location = $location;
+    this.$state = $state;
     this.$scope = $scope;
     this.QuizService = QuizService;
     this.init();
@@ -46,9 +46,13 @@ export default class TestController {
         answer: 'wrong',
       };
     } else {
-      this.QuizService.send();
-      this.QuizService.reset();
-      this.$location.url('result');
+      this.QuizService.send().then(
+          (res) => {
+            const answer = res.data;
+            this.QuizService.reset();
+            this.$state.go('result', { answer });
+          }
+      );
     }
   }
 

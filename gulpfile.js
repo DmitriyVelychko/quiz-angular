@@ -21,7 +21,7 @@ gulp.task('nodemon', (cb) => {
     let called = false;
     return nodemon({
         script: 'app.js',
-        watch: ['app.js']
+        watch: ['**/*.js', '!app/**', '!gulp/**']
     })
         .on('start', function onStart() {
             if (!called) {
@@ -47,7 +47,7 @@ gulp.task('browser-sync', ['nodemon'], () => {
     });
 });
 
-gulp.task('build', gulpsync.sync(['copy', 'styles', 'html2js', 'scripts']));
+gulp.task('build', gulpsync.sync(['copy', 'styles', 'html2js', 'lint', 'scripts']));
 
 gulp.task('default', ['browser-sync'], () => {
     gulp.watch(config.styles.watch, ['styles']);
