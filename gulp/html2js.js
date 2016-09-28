@@ -5,11 +5,11 @@ const concat = require('gulp-concat');
 
 
 gulp.task('html2js', () => {
-    return gulp.src(config.views.default.src)
+    return gulp.src(config.views.src)
         .pipe(html2js({
             moduleName: 'app.templates',
             prefix: "components/"
         }))
         .pipe(concat('app.templates.js'))
-        .pipe(gulp.dest(config.views.default.dest));
+        .pipe(gulp.dest(config.views.dest));
 });

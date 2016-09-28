@@ -1,7 +1,6 @@
 export default class TestController {
 
   constructor($scope, $state, QuizService) {
-    'ngInject';
     this.$state = $state;
     this.$scope = $scope;
     this.QuizService = QuizService;
@@ -31,7 +30,7 @@ export default class TestController {
 
   answerQuestion() {
     this.question.isAnswered = true;
-    this.userAnswer.questionId = this.question.id;
+    this.userAnswer.id = this.question.id;
     this.userAnswer.type = this.question.type;
     this.sessionAnswer.push(this.userAnswer);
     this.QuizService.saveAnswers(this.sessionAnswer);
@@ -43,15 +42,15 @@ export default class TestController {
     if (nextQuestion) {
       this.question = nextQuestion;
       this.userAnswer = {
-        answer: 'wrong',
+        answer: false,
       };
     } else {
       this.QuizService.send().then(
-          (res) => {
-            const answer = res.data;
-            this.QuizService.reset();
-            this.$state.go('result', { answer });
-          }
+        (res) => {
+          const answer = res.data;
+          this.QuizService.reset();
+          this.$state.go('result', { answer });
+        }
       );
     }
   }

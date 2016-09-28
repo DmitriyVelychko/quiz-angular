@@ -1,6 +1,5 @@
 export default class TestService {
   constructor(CommunicationService, $localStorage, $log) {
-    'ngInject';
     this.CommunicationService = CommunicationService;
     this.$localStorage = $localStorage;
     this.$log = $log;

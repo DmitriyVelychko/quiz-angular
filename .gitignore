@@ -2,3 +2,4 @@
 /.idea
 /build/
 /app/app.templates.js
+/npm-debug.log

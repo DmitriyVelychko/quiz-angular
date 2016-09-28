@@ -1,0 +1,23 @@
+{
+  "checker": "first",
+  "questions": [
+    {
+      "id": 0,
+      "type": "single",
+      "text": "RightAnswer 1",
+      "answers": ["1", "2", "3", "4"]
+    },
+    {
+      "id": 1,
+      "type": "single",
+      "text": "RightAnswer 2",
+      "answers": ["1", "2", "3", "4"]
+    },
+    {
+      "id": 2,
+      "type": "single",
+      "text": "RightAnswer 3",
+      "answers": ["1", "2", "3", "4"]
+    }
+  ]
+}

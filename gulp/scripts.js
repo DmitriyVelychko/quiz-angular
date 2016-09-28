@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const babelify = require('babelify');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
-const eslint = require('gulp-eslint');
 const config = require('./config');
 
 gulp.task('scripts', () => {
@@ -16,11 +15,4 @@ gulp.task('scripts', () => {
     })
     .pipe(source('app.js'))
     .pipe(gulp.dest(config.scripts.dest))
-});
-
-gulp.task('lint', () => {
-    return gulp.src(config.scripts.lint)
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
 });
