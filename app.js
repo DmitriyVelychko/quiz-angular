@@ -12,9 +12,11 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(express.static(__dirname + '/build'));
 
-app.use('/', express.static(__dirname + '/build'));
-
+app.get('/', function(req, res){
+  res.sendfile(__dirname + '/build/index.html');
+});
 app.use('/api/result', result);
 
 app.listen(3333);

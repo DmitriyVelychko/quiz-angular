@@ -8,9 +8,8 @@ module.exports = service;
 
 function checkAnswer(data) {
   const deferred = Q.defer();
-
   if (data.checker && data.answers && data.answers.length > 0) {
-    const checker = require(`../app/assets/question/${data.checker}/checker.json`);
+    const checker = require(`../quiz/${data.checker}/checker.json`);
     let userAnswer = data.answers.sort((a, b) => a.id - b.id);
     let correctAnswers = 0;
 
