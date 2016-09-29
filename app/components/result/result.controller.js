@@ -1,6 +1,6 @@
 export default class ResultService {
 
   constructor($stateParams) {
-    this.answer = $stateParams.answer;
+    this.answer = $stateParams.result;
   }
 }

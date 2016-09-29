@@ -1,8 +1,7 @@
 const gulp = require('gulp');
 const html2js = require('gulp-ng-html2js');
-const config = require('./config');
 const concat = require('gulp-concat');
-
+const config = require('./config');
 
 gulp.task('html2js', () =>
   gulp.src(config.views.src)

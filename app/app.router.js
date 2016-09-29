@@ -19,7 +19,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller: 'ResultController',
       controllerAs: 'vm',
       params: {
-        answer: null,
+        result: null,
       },
     });
   $urlRouterProvider.otherwise('/home');

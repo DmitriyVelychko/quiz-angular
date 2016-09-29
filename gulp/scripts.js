@@ -2,11 +2,8 @@ const gulp = require('gulp');
 const babelify = require('babelify');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
-const sourcemaps = require('gulp-sourcemaps');
 const buffer = require('vinyl-buffer');
-const gutil = require('gulp-util');
 const config = require('./config');
-
 
 gulp
   .task('scripts', () =>
@@ -18,9 +15,7 @@ gulp
       .on('error', (err) => {
         console.error(err);
       })
-      .pipe(source(config.scripts.src))
+      .pipe(source('app.js'))
       .pipe(buffer())
-      .pipe(sourcemaps.write('./'))
       .pipe(gulp.dest(config.scripts.dest))
-      .pipe(gutil.noop())
   );

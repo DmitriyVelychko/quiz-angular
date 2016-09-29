@@ -11,10 +11,11 @@ export default class TestController {
   init() {
     this.QuizService.fetchQuiz(this.$stateParams.name).then(
       (data) => {
-        this.questions = data.questions;
-        this.questions.forEach((el, index) => {
-          el.isAnswered = false;
-          el.index = index;
+        this.questions = data.questions.map((el, index) => {
+          const question = el;
+          question.isAnswered = false;
+          question.index = index;
+          return question;
         });
         this.checker = data.checker;
         this.currentQuestion = this.questions[0];
@@ -22,7 +23,7 @@ export default class TestController {
     );
     this.answers = [];
     this.currentAnswer = {
-      answer: false,
+      answer: 0,
     };
   }
 
@@ -37,8 +38,8 @@ export default class TestController {
     const nextQuestion = this.getNext();
     if (nextQuestion) {
       this.currentQuestion = nextQuestion;
-      this.userAnswer = {
-        answer: false,
+      this.currentAnswer = {
+        answer: 0,
       };
     } else {
       this.finishQuiz();
@@ -67,11 +68,14 @@ export default class TestController {
 
 
   finishQuiz() {
-    this.QuizService.send().then(
+    const formatAnswer = {
+      checker: this.checker,
+      answers: this.answers,
+    };
+    this.QuizService.sendAnswers(formatAnswer).then(
       (res) => {
-        const answer = res.data;
-        this.QuizService.reset();
-        this.$state.go('result', { answer });
+        const result = res.data;
+        this.$state.go('result', { result });
       }
     );
   }

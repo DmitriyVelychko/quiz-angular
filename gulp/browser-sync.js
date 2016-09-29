@@ -7,6 +7,6 @@ gulp.task('browser-sync', ['nodemon'], () => {
     proxy: config.browserSync.proxy,
     files: config.browserSync.files,
     port: 1337,
-    browser: 'google-chrome'
+    browser: 'google-chrome',
   });
 });
