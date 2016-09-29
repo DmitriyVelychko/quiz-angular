@@ -4,12 +4,12 @@ const config = require('./config');
 const concat = require('gulp-concat');
 
 
-gulp.task('html2js', () => {
-    return gulp.src(config.views.src)
-        .pipe(html2js({
-            moduleName: 'app.templates',
-            prefix: "components/"
-        }))
-        .pipe(concat('app.templates.js'))
-        .pipe(gulp.dest(config.views.dest));
-});
+gulp.task('html2js', () =>
+  gulp.src(config.views.src)
+    .pipe(html2js({
+      moduleName: 'app.templates',
+      prefix: 'components/',
+    }))
+    .pipe(concat('app.templates.js'))
+    .pipe(gulp.dest(config.views.dest))
+);

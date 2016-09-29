@@ -15,12 +15,12 @@ module.exports = {
   clean: ['build'],
   lint: [`${src}**/*.js`, '!node_modules/**', `!${src}app.templates.js`],
   browserSync: {
-    proxy: 'http://localhost:3333',
-    files: ['build/**']
+    proxy: 'http://localhost:4444',
+    files: ['build/**'],
   },
   question: {
-    src: `./questions/*/test.*`,
-    dest: `${dest}question/`
+    src: './quiz/*/test.*',
+    dest: `${dest}quiz/`,
   },
   views: {
     src: `${src}components/**/*.html`,
@@ -28,6 +28,6 @@ module.exports = {
     index: {
       src: `${src}index.html`,
       dest: `${dest}`,
-    }
-  }
+    },
+  },
 };

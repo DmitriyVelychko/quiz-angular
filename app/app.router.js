@@ -7,8 +7,8 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       controller: 'HomeController',
       controllerAs: 'vm',
     })
-    .state('test', {
-      url: '/test',
+    .state('quiz', {
+      url: '/quiz/:name',
       templateUrl: 'components/quiz/quiz.view.html',
       controller: 'QuizController',
       controllerAs: 'vm',

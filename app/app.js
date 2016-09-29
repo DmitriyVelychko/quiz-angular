@@ -5,7 +5,6 @@ import 'ngstorage';
 import './components/home/home.module';
 import './components/result/result.module';
 import './components/quiz/quiz.module';
-import './components/shared/shared.module';
 import './app.templates';
 
 import { routerConfig } from './app.router';
@@ -16,7 +15,6 @@ angular.module('app', [
   'app.home',
   'app.result',
   'app.quiz',
-  'app.shared',
   'app.templates',
 ])
   .config(routerConfig)

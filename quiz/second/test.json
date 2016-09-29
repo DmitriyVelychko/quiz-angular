@@ -1,5 +1,5 @@
 {
-  "checker": "first",
+  "checker": "second",
   "questions": [
     {
       "id": 0,
@@ -8,12 +8,12 @@
     },
     {
       "id": 1,
-      "text": "RightAnswer = 2",
+      "text": "RightAnswer = 1",
       "answers": ["1", "2", "3", "4"]
     },
     {
       "id": 2,
-      "text": "RightAnswer = 3",
+      "text": "RightAnswer = 1",
       "answers": ["1", "2", "3", "4"]
     }
   ]
