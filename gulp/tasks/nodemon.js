@@ -4,12 +4,12 @@ const bsReload = require('browser-sync').reload;
 
 const BROWSER_SYNC_RELOAD_DELAY = 500;
 
-export default function node(config) {
+export default function server() {
   gulp.task('nodemon', (cb) => {
     let called = false;
     return nodemon({
       script: 'app.js',
-      watch: ['**/*.js', '!app/**', '!gulp/**'],
+      watch: ['**/*.js'],
     })
       .on('start', () => {
         if (!called) {

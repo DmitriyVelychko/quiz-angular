@@ -17,13 +17,13 @@ export default class Tasks {
 
   initTasks() {
     clean(this.config);
-    build(this.config);
+    build();
     copy(this.config);
     index(this.config);
     bSync(this.config);
     html2js(this.config);
     lint(this.config);
-    nodemon(this.config);
+    nodemon();
     styles(this.config);
     scripts(this.config);
   }

@@ -1,9 +1,9 @@
 {
   "name": "quiz-angular",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "test": "gulp build"
   },
   "dependencies": {
     "angular": "^1.5.3",
