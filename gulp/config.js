@@ -1,7 +1,7 @@
 const dest = 'build/';
 const src = 'app/';
 
-module.exports = {
+const config = {
   styles: {
     src: `${src}assets/sass/styles.scss`,
     dest: `${dest}styles/`,
@@ -31,3 +31,5 @@ module.exports = {
     },
   },
 };
+
+export default config;

@@ -1,12 +1,10 @@
-const gulp = require('gulp');
-const babelify = require('babelify');
-const browserify = require('browserify');
-const source = require('vinyl-source-stream');
-const buffer = require('vinyl-buffer');
-const config = require('./config');
+import gulp from 'gulp';
+import babelify from 'babelify';
+import browserify from 'browserify';
+import source from 'vinyl-source-stream';
 
-gulp
-  .task('scripts', () =>
+export default function scripts(config) {
+  gulp.task('scripts', () =>
     browserify(config.scripts.src, { debug: true })
       .transform(babelify.configure({
         presets: ['es2015'], plugins: ['ng-annotate'], sourceMaps: true,
@@ -16,6 +14,6 @@ gulp
         console.error(err);
       })
       .pipe(source('app.js'))
-      .pipe(buffer())
       .pipe(gulp.dest(config.scripts.dest))
   );
+}
