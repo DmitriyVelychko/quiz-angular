@@ -23,7 +23,7 @@ export default class Tasks {
     bSync(this.config);
     html2js(this.config);
     lint(this.config);
-    nodemon();
+    nodemon(this.config);
     styles(this.config);
     scripts(this.config);
   }

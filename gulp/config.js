@@ -14,9 +14,10 @@ const config = {
   },
   clean: ['build'],
   lint: [`${src}**/*.js`, '!node_modules/**', `!${src}app.templates.js`],
-  browserSync: {
+  server: {
     proxy: 'http://localhost:4444',
     files: ['build/**'],
+    ignore: ['build/', 'app/', 'gulp/']
   },
   question: {
     src: './quiz/*/test.*',
