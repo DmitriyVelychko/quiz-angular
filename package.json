@@ -36,5 +36,13 @@
     "gulp-sync": "^0.1.4",
     "gulp-uglify": "^1.5.3",
     "vinyl-source-stream": "^1.1.0"
-  }
+  },
+  "description": "Angular app for creating and resolving quizes",
+  "main": "app.js",
+  "repository": {
+    "url": "git@github.com:DmitriyVelychko/quiz-angular.git",
+    "type": "git"
+  },
+  "author": "Dmitriy Velychko <velychko.dmitriy@gmail.com>",
+  "license": "MIT"
 }
