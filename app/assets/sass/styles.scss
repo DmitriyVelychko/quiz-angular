@@ -1,0 +1,17 @@
+a {
+  color: #0000EE;
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: #800080;
+  }
+}
+
+label, input {
+  cursor: pointer;
+}
+
+ul, ol {
+  list-style-type: none;
+}

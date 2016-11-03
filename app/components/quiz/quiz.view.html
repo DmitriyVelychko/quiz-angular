@@ -1,10 +1,16 @@
-<h1>Hello Test</h1>
+<h1>Quiz</h1>
 
 <p>{{vm.currentQuestion.text}}</p>
-<label ng-repeat="answer in vm.currentQuestion.answers">
-    <input type="radio" name="answer" ng-model="vm.currentAnswer.answer" value="{{$index}}">
-    {{answer}}<br>
-</label><br>
+<ul>
+    <li ng-repeat="answer in vm.currentQuestion.answers">
+        <input type="radio"
+               id="answer-{{$index}}"
+               name="answer"
+               ng-model="vm.currentAnswer.answer"
+               value="{{$index}}"/>
+        <label for="answer-{{$index}}">{{answer}}</label>
+    </li>
+</ul>
 
-<button ng-click="vm.nextQuestion()">Пропустить вопрос</button> <br>
-<button ng-click="vm.answerQuestion()">Следующий вопрос</button>
+<button ng-click="vm.nextQuestion()">Skip</button>
+<button ng-click="vm.answerQuestion()">Next</button>
