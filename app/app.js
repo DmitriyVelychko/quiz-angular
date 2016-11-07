@@ -6,7 +6,6 @@ import './assets/sass/styles.scss';
 import './components/home/home.module';
 import './components/result/result.module';
 import './components/quiz/quiz.module';
-import './app.templates';
 
 import { routerConfig } from './app.router';
 
@@ -15,7 +14,6 @@ angular.module('app', [
   'app.home',
   'app.result',
   'app.quiz',
-  'app.templates',
 ])
   .config(routerConfig)
 ;

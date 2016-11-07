@@ -1,21 +1,24 @@
+import home from './components/home/home.view.html';
+import quiz from './components/quiz/quiz.view.html';
+import result from './components/result/result.view.html';
+
 export function routerConfig($stateProvider, $urlRouterProvider) {
-  'ngInject';
   $stateProvider
     .state('home', {
       url: '/home',
-      templateUrl: 'components/home/home.view.html',
+      template: home,
       controller: 'HomeController',
       controllerAs: 'vm',
     })
     .state('quiz', {
       url: '/quiz/:name',
-      templateUrl: 'components/quiz/quiz.view.html',
+      template: quiz,
       controller: 'QuizController',
       controllerAs: 'vm',
     })
     .state('result', {
       url: '/result',
-      templateUrl: 'components/result/result.view.html',
+      template: result,
       controller: 'ResultController',
       controllerAs: 'vm',
       params: {
