@@ -6,7 +6,7 @@ module.exports = {
   entry: './app/app.js',
 
   output: {
-    path: './build/js',
+    path: __dirname + '/build/js',
     filename: 'bundle.js'
   },
 
@@ -16,6 +16,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
       }
     ]
   },
